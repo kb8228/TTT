@@ -5,7 +5,7 @@ angular
 	function MainController () {
 		var self = this;
 
-		//Revise this:
+		//value will later be x or o
 		self.squares = [
 			{sq: false,
 			 value: null},
