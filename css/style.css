@@ -1,0 +1,71 @@
+body {
+	background: url("../images/white_wall.png");
+	background-color: white;
+	text-align: center;
+	font-family: 'Sigmar One', cursive;
+}
+
+h1 {
+	/*color: #F4810A;*/
+	color: crimson;
+	margin-top: 15px;
+	margin-bottom: 0px;
+}
+h2 {
+	margin-top: 0px;
+	color: gray;
+}
+
+#left-panel {
+	height: 700px;
+	width: 24%;
+	display: inline-block;
+	vertical-align: top;
+	border: 1px solid blue;
+}
+
+#center-panel {
+	height: 700px;
+	width: 50%;
+	margin: 0px auto;
+	display: inline-block;
+	vertical-align: top;
+	border: 1px solid blue;
+}
+
+#right-panel {
+	height: 700px;
+	width: 24%;
+	display: inline-block;
+	vertical-align: top;
+	border: 1px solid blue;
+}
+
+.x-o {
+	height: 75px;
+	width: 75px;
+	margin: 200px auto 0px;
+	background-color: snow;
+	border: 1px solid red;
+	border-radius: 5px;
+}
+
+.player-name {
+	height: 250px;
+	width: 75px;
+	margin: 10px auto;
+	background-color: snow;
+	border: 1px solid red;
+	border-radius: 5px;
+}
+
+.square {
+	height: 150px;
+	width: 150px;
+	display: inline-block;
+	vertical-align: top;
+	background-color: snow;
+	border: 1px solid red;
+	border-radius: 5px;
+	margin: 3px;
+}
