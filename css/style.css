@@ -18,7 +18,7 @@ h2 {
 
 #left-panel {
 	height: 700px;
-	width: 24%;
+	width: 200px;
 	display: inline-block;
 	vertical-align: top;
 	border: 1px solid blue;
@@ -26,7 +26,7 @@ h2 {
 
 #center-panel {
 	height: 700px;
-	width: 50%;
+	width: 500px;
 	margin: 0px auto;
 	display: inline-block;
 	vertical-align: top;
@@ -35,7 +35,7 @@ h2 {
 
 #right-panel {
 	height: 700px;
-	width: 24%;
+	width: 200px;
 	display: inline-block;
 	vertical-align: top;
 	border: 1px solid blue;
@@ -48,6 +48,14 @@ h2 {
 	background-color: snow;
 	border: 1px solid red;
 	border-radius: 5px;
+}
+
+.x {
+	background: url("../images/x.png") no-repeat;
+}
+
+.o {
+	background: url("../images/o.png") no-repeat;
 }
 
 .player-name {
