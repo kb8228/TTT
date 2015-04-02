@@ -7,7 +7,6 @@ angular
 		self.picker;
 		self.pickSymbol = pickSymbol;
 		self.makeMove = makeMove;
-		self.moveLog = [null, null, null, null, null, null, null, null, null];
 		self.checkWin = checkWin;
 
 		//value will later be x or o
@@ -34,9 +33,11 @@ angular
 			if(sq.status === "free"){
 				if(self.picker === "X"){
 					sq.symbol = "x";
+					pickSymbol("O");
 				}
 				else if(self.picker === "O"){
 					sq.symbol = "o";
+					pickSymbol("X");
 				}
 			}
 			else{
@@ -44,32 +45,30 @@ angular
 			}
 			sq.status = "occupied";
 
-			//pushes picked squares into correct indices in the log:
-			self.moveLog.splice(self.squares.indexOf(sq), 1, sq.symbol);
 			//runs winner check for the player who made latest move:
 			checkWin(sq.symbol);
 		}
 
 		// REVIEW FOR X or O - done
 		function checkWin(symb){
-			console.log(self.moveLog);
-			var allSquaresTaken = self.moveLog.every(function(x){
-				return x !== null;
+			console.dir(self.squares);
+			var allSquaresTaken = self.squares.every(function(x){
+				return x.symbol !== null;
 			});
 			// check columns
-			if((symb === self.moveLog[0] && symb === self.moveLog[3] && symb === self.moveLog[6]) || (symb === self.moveLog[1] && symb === self.moveLog[4] && symb === self.moveLog[7]) || (symb === self.moveLog[2] && symb === self.moveLog[5] && symb === self.moveLog[8])){
+			if((symb === self.squares[0].symbol && symb === self.squares[3].symbol && symb === self.squares[6].symbol) || (symb === self.squares[1].symbol && symb === self.squares[4].symbol && symb === self.squares[7].symbol) || (symb === self.squares[2].symbol && symb === self.squares[5].symbol && symb === self.squares[8].symbol)){
 				alert(symb.toUpperCase() + " wins!");
 			}
 			// check rows
-			else if ((symb === self.moveLog[0] && symb === self.moveLog[1] && symb === self.moveLog[2]) || (symb === self.moveLog[3] && symb === self.moveLog[4] && symb === self.moveLog[5]) || (symb === self.moveLog[6] && symb === self.moveLog[7] && symb === self.moveLog[8])){
+			else if ((symb === self.squares[0].symbol && symb === self.squares[1].symbol && symb === self.squares[2].symbol) || (symb === self.squares[3].symbol && symb === self.squares[4].symbol && symb === self.squares[5].symbol) || (symb === self.squares[6].symbol && symb === self.squares[7].symbol && symb === self.squares[8].symbol)){
 				alert(symb.toUpperCase() + " wins!");
 			}
 			//check diagonals
-			else if ((symb === self.moveLog[0] && symb === self.moveLog[4] && symb === self.moveLog[8]) || (symb === self.moveLog[2] && symb === self.moveLog[4] && symb === self.moveLog[6])){
+			else if ((symb === self.squares[0].symbol && symb === self.squares[4].symbol && symb === self.squares[8].symbol) || (symb === self.squares[2].symbol && symb === self.squares[4].symbol && symb === self.squares[6].symbol)){
 				alert(symb.toUpperCase() + " wins!");
 			}
 			//check for tie
-			else if ((self.moveLog.length === 9) && allSquaresTaken){
+			else if ((self.squares.length === 9) && allSquaresTaken){
 				alert("It's a tie!");
 			}
 		}//function checkWin END
