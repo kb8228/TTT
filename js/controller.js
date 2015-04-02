@@ -12,15 +12,15 @@ angular
 
 		//value will later be x or o
 		self.squares = [
-			{symbol: null},
-			{symbol: null},
-			{symbol: null},
-			{symbol: null},
-			{symbol: null},
-			{symbol: null},
-			{symbol: null},
-			{symbol: null},
-			{symbol: null}
+			{symbol: null, status: "free"},
+			{symbol: null, status: "free"},
+			{symbol: null, status: "free"},
+			{symbol: null, status: "free"},
+			{symbol: null, status: "free"},
+			{symbol: null, status: "free"},
+			{symbol: null, status: "free"},
+			{symbol: null, status: "free"},
+			{symbol: null, status: "free"}
 		];
 
 		function pickSymbol(s) {
@@ -29,17 +29,24 @@ angular
 			return self.picker;
 		}
 
+		// sets symbol value and status "occupied" in db:
 		function makeMove(sq) {
-			if(self.picker === "X"){
-				sq.symbol = "x";
+			if(sq.status === "free"){
+				if(self.picker === "X"){
+					sq.symbol = "x";
+				}
+				else if(self.picker === "O"){
+					sq.symbol = "o";
+				}
 			}
-			else if(self.picker === "O"){
-				sq.symbol = "o";
+			else{
+				alert("Illegal move - square already taken!");
 			}
-			//var sIndex = self.squares.indexOf(sq); <=disregard for now
+			sq.status = "occupied";
 
-			//trying to log moves in correct indices:
+			//pushes picked squares into correct indices in the log:
 			self.moveLog.splice(self.squares.indexOf(sq), 1, sq.symbol);
+			//runs winner check for the player who made latest move:
 			checkWin(sq.symbol);
 		}
 
@@ -47,7 +54,7 @@ angular
 		function checkWin(symb){
 			console.log(self.moveLog);
 			var allSquaresTaken = self.moveLog.every(function(x){
-				return x !== null && x !== undefined;
+				return x !== null;
 			});
 			// check columns
 			if((symb === self.moveLog[0] && symb === self.moveLog[3] && symb === self.moveLog[6]) || (symb === self.moveLog[1] && symb === self.moveLog[4] && symb === self.moveLog[7]) || (symb === self.moveLog[2] && symb === self.moveLog[5] && symb === self.moveLog[8])){
