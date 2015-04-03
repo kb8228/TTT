@@ -30,6 +30,9 @@ angular
 
 		// sets symbol value and status "occupied" in db:
 		function makeMove(sq) {
+			// checks that symbol was picked
+			if(self.picker){
+			//checks that square is free
 			if(sq.status === "free"){
 				if(self.picker === "X"){
 					sq.symbol = "x";
@@ -44,9 +47,12 @@ angular
 				alert("Illegal move - square already taken!");
 			}
 			sq.status = "occupied";
-
 			//runs winner check for the player who made latest move:
 			checkWin(sq.symbol);
+			}
+			else{
+				alert("Pick your side first!");
+			}
 		}
 
 		// REVIEW FOR X or O - done
