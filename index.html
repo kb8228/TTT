@@ -5,7 +5,7 @@
 	<link rel="stylesheet" type="text/css" href="css/normalize.css">
 	<!-- Font -->
 	<link href='http://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
-	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="stylesheet" type="text/css" href="css/style-a.css">
 	<!-- Angular -->
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.js"></script>
 	<!-- Firebase -->
@@ -25,13 +25,13 @@
 			<!-- symbol picker Vim -->
 			<div class="x-o" id="x-symbol" ng-click="main.pickSymbol('X')"></div>
 			<div class="player-name">
-				
+				<span>{{main.stats.playerOne}}</span>
 			</div>
 		</div>
 		<!-- GAME BOARD START -->
 		<div id="center-panel">
 			<h1>TIC-TAC-TOE: Vim vs. Emacs</h1>
-			<h2>PICK YOUR SIDE! {{ }}</h2>
+			<h2>{{main.stats.message}}</h2>
 			<div class="square" ng-repeat="sq in main.squares" ng-click="main.makeMove(sq)" ng-class="sq.symbol">
 			</div><br><br>
 			<button id="play" ng-show="main.stats.gameEnd === true" ng-click="main.resetBoard()">PLAY AGAIN</button>
@@ -42,7 +42,7 @@
 			<!-- symbol picker Emacs -->
 			<div class="x-o" id="o-symbol" ng-click="main.pickSymbol('O')"></div>
 			<div class="player-name">
-				
+				<span>{{main.stats.playerTwo}}</span>
 			</div>
 		</div>
 

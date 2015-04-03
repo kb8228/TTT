@@ -1,0 +1,107 @@
+body {
+
+  background: url("../images/9461018912_858c53751b_k.jpg") no-repeat;
+  background-size: cover;
+  background-position: center;
+  
+  background-color: lightgray;
+  text-align: center;
+  font-family: 'Oxygen', sans-serif;
+}
+
+h1 {
+  /*color: #F4810A;*/
+  color: crimson;
+  margin-top: 40px;
+  margin-bottom: 20px;
+}
+h2 {
+  font-size: 20px;
+  margin-top: 0px;
+  margin-bottom: 30px;
+  color: snow;
+}
+
+#container {
+  width: 850px;
+  height: 100%;
+  margin: 0px auto;
+  text-align: center;
+}
+
+#left-panel {
+  height: 700px;
+  width: 150px;
+  display: inline-block;
+  vertical-align: top;
+  /*border: 1px solid blue;*/
+}
+
+#center-panel {
+  height: 700px;
+  width: 500px;
+  margin: 0px auto;
+  display: inline-block;
+  vertical-align: top;
+  /*border: 1px solid blue;*/
+}
+
+#right-panel {
+  height: 700px;
+  width: 150px;
+  display: inline-block;
+  vertical-align: top;
+  /*border: 1px solid blue;*/
+}
+
+.x-o {
+  height: 75px;
+  width: 75px;
+  margin: 200px auto 0px;
+  /*background-color: snow;*/
+  /*border: 1px solid red;*/
+  /*border-radius: 5px;*/
+}
+
+#x-symbol {
+  background: url("../images/vim-sm.png");
+  background-size: cover;
+}
+#o-symbol {
+  background: url("../images/emacs-sm.png");
+  background-size: cover;
+}
+
+.X {
+  background: url("../images/vim-sm.png") no-repeat;
+}
+
+.O {
+  background: url("../images/emacs-sm.png") no-repeat;
+}
+
+.player-name {
+  height: 250px;
+  width: 75px;
+  margin: 10px auto;
+  /*border: 1px solid red;*/
+  /*border-radius: 37px;*/
+}
+
+span {
+  color: lightgray;
+  font-size: 24px;
+  -webkit-writing-mode: vertical-rl;
+  -webkit-text-orientation: upright;
+}
+
+.square {
+  height: 150px;
+  width: 150px;
+  display: inline-block;
+  vertical-align: top;
+  background-color: rgba(255, 255, 255, 0.2);
+  /*border: 1px dashed red;
+  border-radius: 75px;*/
+  margin: 4px;
+}
