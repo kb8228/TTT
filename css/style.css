@@ -1,15 +1,14 @@
 body {
-	background: url("../images/white_wall.png");
-	background-color: white;
+	background-color: lightgray;
 	text-align: center;
-	font-family: 'Sigmar One', cursive;
+	font-family: 'Oxygen', sans-serif;
 }
 
 h1 {
 	/*color: #F4810A;*/
 	color: crimson;
 	margin-top: 15px;
-	margin-bottom: 0px;
+	margin-bottom: 10px;
 }
 h2 {
 	margin-top: 0px;
@@ -50,12 +49,21 @@ h2 {
 	border-radius: 5px;
 }
 
-.x {
-	background: url("../images/x.png") no-repeat;
+#x-symbol {
+	background: url("../images/vim-sm.png");
+	background-size: cover;
+}
+#o-symbol {
+	background: url("../images/emacs-sm.png");
+	background-size: cover;
 }
 
-.o {
-	background: url("../images/o.png") no-repeat;
+.X {
+	background: url("../images/vim-sm.png") no-repeat;
+}
+
+.O {
+	background: url("../images/emacs-sm.png") no-repeat;
 }
 
 .player-name {
