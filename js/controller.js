@@ -32,7 +32,7 @@ angular
 				stats.picker = " ";
 				stats.gameEnd = false;
 				stats.$save();
-				stats.message = "PICK YOUR SIDE!";
+				stats.message = "CHOOSE YOUR SIDE!";
 				stats.playerOne = "PLAYER 1";
 				stats.playerTwo = "PLAYER 2";
 				console.log(stats.picker);

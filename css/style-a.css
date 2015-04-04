@@ -1,6 +1,6 @@
 body {
 
-  background: url("../images/9461018912_858c53751b_k.jpg") no-repeat;
+  background: url("../images/outer-space-hd-wallpaper.jpg") no-repeat;
   background-size: cover;
   background-position: center;
   
@@ -11,15 +11,15 @@ body {
 
 h1 {
   /*color: #F4810A;*/
-  color: crimson;
-  margin-top: 40px;
-  margin-bottom: 20px;
+  color: lightgray;
+  margin-top: 30px;
+  margin-bottom: 10px;
 }
 h2 {
   font-size: 20px;
   margin-top: 0px;
   margin-bottom: 30px;
-  color: snow;
+  color: white;
 }
 
 #container {
@@ -27,6 +27,16 @@ h2 {
   height: 100%;
   margin: 0px auto;
   text-align: center;
+}
+
+#green {
+  font-size: 42px;
+  color: #259644;
+}
+
+#purple {
+  font-size: 42px;
+  color: #524DB1;
 }
 
 #left-panel {
@@ -88,7 +98,7 @@ h2 {
   /*border-radius: 37px;*/
 }
 
-span {
+.player-name > span {
   color: lightgray;
   font-size: 24px;
   -webkit-writing-mode: vertical-rl;
@@ -104,4 +114,11 @@ span {
   /*border: 1px dashed red;
   border-radius: 75px;*/
   margin: 4px;
+}
+
+button {
+  background-color: black;
+  border: none;
+  color: rgb(248, 249, 249);
+  padding: 10px;
 }

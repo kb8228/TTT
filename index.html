@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>TIC-TAC-TOE</title>
+	<title>VIM-vs-EMACS: a tic-tac-toe game</title>
 	<link rel="stylesheet" type="text/css" href="css/normalize.css">
 	<!-- Font -->
 	<link href='http://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
@@ -30,7 +30,7 @@
 		</div>
 		<!-- GAME BOARD START -->
 		<div id="center-panel">
-			<h1>TIC-TAC-TOE: Vim vs. Emacs</h1>
+			<h1><span id="green">VIM</span> vs. <span id="purple">EMACS</span></h1>
 			<h2>{{main.stats.message}}</h2>
 			<div class="square" ng-repeat="sq in main.squares" ng-click="main.makeMove(sq)" ng-class="sq.symbol">
 			</div><br><br>
