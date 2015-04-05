@@ -12,20 +12,14 @@ angular
 		self.checkWin = checkWin;
 		self.squares = getSquares();
 		self.stats = getStatsObj();
-		//self.gameEnd = false;
+		self.currentPlayer;
 		self.resetBoard = resetBoard;
+
 		////////////////////////////////////////
 		//OBJECT stats:
 		function getStatsObj(){
 			var ref = new Firebase('https://kstictactoeapp.firebaseio.com/stats');
 			var stats = $firebaseObject(ref);
-
-			// stats.picker = " ";
-			// stats.gameEnd = false;
-			// stats.playerOneId;
-			// stats.playerTwoId;
-
-   //    stats.$save();
 
 			// PROMISE in action:
 			stats.$loaded(function(){
@@ -71,16 +65,6 @@ angular
 			return tictactoe;
 		} // getSquares END
 
-		function resetBoard () {
-			for(var i = 0; i < 9; i++){
-				self.squares[i].symbol = " ";
-				self.squares[i].status = "free";
-				self.squares.$save(i);
-			}
-			self.stats.gameEnd = false;
-			self.stats.picker = " ";
-			self.stats.$save();
-		}
 		// X or O picker:
 		function pickSymbol(s) {
 			if(self.stats.picker === " "){
@@ -111,7 +95,7 @@ angular
 						}
 					}
 					else{
-						alert("Illegal move - square already taken!");
+						self.stats.message = "Hey, that square's taken!";
 					}// free square checker END
 					sq.status = "occupied";
 					self.squares.$save(sq);
@@ -119,41 +103,56 @@ angular
 					checkWin(sq.symbol);
 				}
 				else{
-					alert("Pick your side first!");
+					self.stats.message = "Choose your side first!";
 				}//picker checker END
 			}//gameEnd checker END
 		}
 
 		// REVIEW FOR X or O - done
 		function checkWin(symb){
+//make message print players instead of x-o!!!
 			console.dir(self.squares);
-			var allSquaresTaken = self.squares.every(function(x){
-				return x.symbol !== " ";
+			//check if all squares occupied
+			var allSquaresTaken = self.squares.every(function(i){
+				return i.symbol !== " ";
 			});
 			// check columns
 			if((symb === self.squares[0].symbol && symb === self.squares[3].symbol && symb === self.squares[6].symbol) || (symb === self.squares[1].symbol && symb === self.squares[4].symbol && symb === self.squares[7].symbol) || (symb === self.squares[2].symbol && symb === self.squares[5].symbol && symb === self.squares[8].symbol)){
-				alert(symb + " wins!");
+				self.stats.message = symb + " wins!";
 				self.stats.gameEnd = true;
 				self.stats.$save();
 			}
 			// check rows
 			else if ((symb === self.squares[0].symbol && symb === self.squares[1].symbol && symb === self.squares[2].symbol) || (symb === self.squares[3].symbol && symb === self.squares[4].symbol && symb === self.squares[5].symbol) || (symb === self.squares[6].symbol && symb === self.squares[7].symbol && symb === self.squares[8].symbol)){
-				alert(symb + " wins!");
+				self.stats.message = symb + " wins!";
 				self.stats.gameEnd = true;
 				self.stats.$save();
 			}
 			//check diagonals
 			else if ((symb === self.squares[0].symbol && symb === self.squares[4].symbol && symb === self.squares[8].symbol) || (symb === self.squares[2].symbol && symb === self.squares[4].symbol && symb === self.squares[6].symbol)){
-				alert(symb + " wins!");
+				self.stats.message = symb + " wins!";
 				self.stats.gameEnd = true;
 				self.stats.$save();
 			}
 			//check for tie
 			else if (allSquaresTaken){
-				alert("It's a tie!");
+				self.stats.message = "It's a tie!";
 				self.stats.gameEnd = true;
 				self.stats.$save();
 			}
 		}//function checkWin END
+
+		//RESET start
+		function resetBoard () {
+			for(var i = 0; i < 9; i++){
+				self.squares[i].symbol = " ";
+				self.squares[i].status = "free";
+				self.squares.$save(i);
+			}
+			self.stats.gameEnd = false;
+			self.stats.picker = " ";
+			self.stats.message = "CHOOSE YOUR SIDE!";
+			self.stats.$save();
+		}// resetBoard END
 
 	} // MainController END
