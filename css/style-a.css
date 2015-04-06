@@ -95,21 +95,23 @@ border-style: solid;
 border-color: white;
 border-radius: 58px;
 
-animation:myfirst 2s;
--moz-animation:myfirst 2s; /* Firefox */
--webkit-animation:myfirst 2s; /* Safari and Chrome */
--o-animation:myfirst 2s; /* Opera */
+animation:myfirst 3s;
+-moz-animation:myfirst 3s; /* Firefox */
+-webkit-animation:myfirst 3s; /* Safari and Chrome */
+-o-animation:myfirst 3s; /* Opera */
     
--moz-animation-iteration-count: infinite;
--webkit-animation-iteration-count: infinite;
--o-animation-iteration-count: infinite;
+-moz-animation-iteration-count: 1;
+-webkit-animation-iteration-count: 1;
+-o-animation-iteration-count: 1;
 }
 
 @keyframes myfirst
 {
 0%   {border-width: 8px; border-radius: 58px;}
 /*25%  {border-width: 4px; border-radius: 54px;}*/
-50%  {border-width: 0px; border-radius: 50px;}
+25%  {border-width: 0px; border-radius: 50px;}
+50%  {border-width: 8px; border-radius: 58px;}
+75%  {border-width: 0px; border-radius: 50px;}
 /*75% {border-width: 4px; border-radius: 54px;}*/
 100%   {border-width: 8px; border-radius: 58px;}
 }
@@ -118,7 +120,9 @@ animation:myfirst 2s;
 {
 0%   {border-width: 8px; border-radius: 58px;}
 /*25%  {border-width: 4px; border-radius: 54px;}*/
-50%  {border-width: 0px; border-radius: 50px;}
+25%  {border-width: 0px; border-radius: 50px;}
+50%  {border-width: 8px; border-radius: 58px;}
+75%  {border-width: 0px; border-radius: 50px;}
 /*75% {border-width: 4px; border-radius: 54px;}*/
 100%   {border-width: 8px; border-radius: 58px;}
 }
@@ -127,7 +131,9 @@ animation:myfirst 2s;
 {
 0%   {border-width: 8px; border-radius: 58px;}
 /*25%  {border-width: 4px; border-radius: 54px;}*/
-50%  {border-width: 0px; border-radius: 50px;}
+25%  {border-width: 0px; border-radius: 50px;}
+50%  {border-width: 8px; border-radius: 58px;}
+75%  {border-width: 0px; border-radius: 50px;}
 /*75% {border-width: 4px; border-radius: 54px;}*/
 100%   {border-width: 8px; border-radius: 58px;}
 }
@@ -136,7 +142,9 @@ animation:myfirst 2s;
 {
 0%   {border-width: 8px; border-radius: 58px;}
 /*25%  {border-width: 4px; border-radius: 54px;}*/
-50%  {border-width: 0px; border-radius: 50px;}
+25%  {border-width: 0px; border-radius: 50px;}
+50%  {border-width: 8px; border-radius: 58px;}
+75%  {border-width: 0px; border-radius: 50px;}
 /*75% {border-width: 4px; border-radius: 54px;}*/
 100%   {border-width: 8px; border-radius: 58px;}
 }
