@@ -13,6 +13,7 @@ angular
 		self.squares = getSquares();
 		self.stats = getStatsObj();
 		self.currentPlayer;
+		self.message = "CHOOSE YOUR SIDE!";
 		self.resetBoard = resetBoard;
 
 		////////////////////////////////////////
@@ -25,10 +26,10 @@ angular
 			stats.$loaded(function(){
 				stats.picker = " ";
 				stats.gameEnd = false;
-				stats.$save();
-				stats.message = "CHOOSE YOUR SIDE!";
 				stats.playerOne = "PLAYER 1";
 				stats.playerTwo = "PLAYER 2";
+				self.stats.message = self.message;
+				stats.$save();
 				console.log(stats.picker);
 			});
 
@@ -69,10 +70,16 @@ angular
 		function pickSymbol(s) {
 			if(self.stats.picker === " "){
 				self.stats.picker = s;
-				console.log(self.stats.picker);
+				self.currentPlayer = s;
+				console.log(currentPlayer);
 				self.stats.$save();
 				return self.stats.picker;
 			}
+			else{
+				self.currentPlayer = self.stats.picker;
+				console.log(currentPlayer);
+			}
+			self.stats.message = "Sides have been picked!";
 		}
 
 		// sets symbol value and status "occupied" in db:
@@ -83,19 +90,19 @@ angular
 				if(self.stats.picker !== " "){
 					//checks that square is free
 					if(sq.status === "free"){
-						if(self.stats.picker === "X"){
-							sq.symbol = "X";
-							self.stats.picker = "O";
+						if(self.stats.picker === "Vim"){
+							sq.symbol = "Vim";
+							self.stats.picker = "Emacs";
 							self.stats.$save();
 						}
-						else if(self.stats.picker === "O"){
-							sq.symbol = "O";
-							self.stats.picker = "X";
+						else if(self.stats.picker === "Emacs"){
+							sq.symbol = "Emacs";
+							self.stats.picker = "Vim";
 							self.stats.$save();
 						}
 					}
 					else{
-						self.stats.message = "Hey, that square's taken!";
+						self.message = "Hey, that square's taken!";
 					}// free square checker END
 					sq.status = "occupied";
 					self.squares.$save(sq);
@@ -103,14 +110,13 @@ angular
 					checkWin(sq.symbol);
 				}
 				else{
-					self.stats.message = "Choose your side first!";
+					self.message = "Choose your side first!";
 				}//picker checker END
 			}//gameEnd checker END
 		}
 
 		// REVIEW FOR X or O - done
 		function checkWin(symb){
-//make message print players instead of x-o!!!
 			console.dir(self.squares);
 			//check if all squares occupied
 			var allSquaresTaken = self.squares.every(function(i){

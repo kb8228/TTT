@@ -20,16 +20,19 @@
 <!-- BODY START -->
 <body ng-app="tttApp">
 	<div id="container" ng-controller="MainController as main">
-		<!-- X-player panel -->
+		<!-- Vim-player panel -->
 		<div id="left-panel">
 			<!-- symbol picker Vim -->
-			<div class="x-o" id="x-symbol" ng-click="main.pickSymbol('X')"></div>
+			<div class="symbol-container">
+				<div class="vim-emacs-animate" id="vim-symbol" ng-click="main.pickSymbol('Vim')"></div>
+			</div>
 			<div class="player-name">
 				<span>{{main.stats.playerOne}}</span>
 			</div>
 		</div>
 		<!-- GAME BOARD START -->
 		<div id="center-panel">
+			<h3>tic-tac-toe:</h3>
 			<h1><span id="green">VIM</span> vs. <span id="purple">EMACS</span></h1>
 			<h2>{{main.stats.message}}</h2>
 			<div class="square" ng-repeat="sq in main.squares" ng-click="main.makeMove(sq)" ng-class="sq.symbol">
@@ -37,10 +40,12 @@
 			<button id="play" ng-show="main.stats.gameEnd === true" ng-click="main.resetBoard()">PLAY AGAIN</button>
 		</div><!-- GAME BOARD END -->
 
-		<!-- O-player panel -->
+		<!-- Emacs-player panel -->
 		<div id="right-panel">
 			<!-- symbol picker Emacs -->
-			<div class="x-o" id="o-symbol" ng-click="main.pickSymbol('O')"></div>
+			<div class="symbol-container">
+				<div class="vim-emacs-animate" id="emacs-symbol" ng-click="main.pickSymbol('Emacs')"></div>
+			</div>
 			<div class="player-name">
 				<span>{{main.stats.playerTwo}}</span>
 			</div>
