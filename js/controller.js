@@ -125,7 +125,7 @@ angular
 					
 				}
 				else{
-					self.message = "Choose your side first!";
+					self.stats.message = "Choose your side first!";
 				}//picker checker END
 			}//gameEnd checker END
 		}
