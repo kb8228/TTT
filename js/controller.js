@@ -71,15 +71,15 @@ angular
 			if(self.stats.picker === " "){
 				self.stats.picker = s;
 				self.currentPlayer = s;
-				console.log(currentPlayer);
+				console.log(self.currentPlayer);
+				self.stats.message = "Sides have been picked!";
 				self.stats.$save();
-				return self.stats.picker;
 			}
 			else{
 				self.currentPlayer = self.stats.picker;
-				console.log(currentPlayer);
-			}
-			self.stats.message = "Sides have been picked!";
+				console.log(self.currentPlayer);
+			}		
+			return self.stats.picker;
 		}
 
 		// sets symbol value and status "occupied" in db:
