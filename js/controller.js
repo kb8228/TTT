@@ -12,8 +12,7 @@ angular
 		self.checkWin = checkWin;
 		self.squares = getSquares();
 		self.stats = getStatsObj();
-		self.currentPlayer;
-		self.message = "CHOOSE YOUR SIDE!";
+		self.currentPlayer = null;
 		self.resetBoard = resetBoard;
 
 		////////////////////////////////////////
@@ -28,7 +27,7 @@ angular
 				stats.gameEnd = false;
 				stats.playerOne = "PLAYER 1";
 				stats.playerTwo = "PLAYER 2";
-				self.stats.message = self.message;
+				self.stats.message = "CHOOSE YOUR SIDE!";
 				stats.$save();
 				console.log(stats.picker);
 			});
@@ -75,10 +74,22 @@ angular
 				self.stats.message = "Sides have been picked!";
 				self.stats.$save();
 			}
-			else{
-				self.currentPlayer = self.stats.picker;
-				console.log(self.currentPlayer);
-			}		
+			else if(self.stats.picker === "Vim" && self.currentPlayer === "Vim"){
+					self.currentPlayer = "Vim";
+					console.log(self.currentPlayer);
+				}
+			else if(self.stats.picker === "Vim" && self.currentPlayer === null){
+					self.currentPlayer = "Emacs";
+					console.log(self.currentPlayer);
+				}
+			else if(self.stats.picker === "Emacs" && self.currentPlayer === "Emacs"){
+					self.currentPlayer = "Emacs";
+					console.log(self.currentPlayer);
+				}
+			else if(self.stats.picker === "Emacs" && self.currentPlayer === null){
+					self.currentPlayer = "Vim";
+					console.log(self.currentPlayer);
+				}
 			return self.stats.picker;
 		}
 
@@ -90,24 +101,28 @@ angular
 				if(self.stats.picker !== " "){
 					//checks that square is free
 					if(sq.status === "free"){
-						if(self.stats.picker === "Vim"){
+						if(self.stats.picker === "Vim" && self.currentPlayer === "Vim"){
 							sq.symbol = "Vim";
 							self.stats.picker = "Emacs";
 							self.stats.$save();
+							sq.status = "occupied";
+							checkWin(sq.symbol);
 						}
-						else if(self.stats.picker === "Emacs"){
+						else if(self.stats.picker === "Emacs" && self.currentPlayer === "Emacs"){
 							sq.symbol = "Emacs";
 							self.stats.picker = "Vim";
 							self.stats.$save();
+							sq.status = "occupied";
+							checkWin(sq.symbol);
 						}
 					}
 					else{
 						self.message = "Hey, that square's taken!";
 					}// free square checker END
-					sq.status = "occupied";
+					
 					self.squares.$save(sq);
 					//runs winner check for the player who made latest move:
-					checkWin(sq.symbol);
+					
 				}
 				else{
 					self.message = "Choose your side first!";
